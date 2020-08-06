@@ -1,15 +1,20 @@
 import React from 'react'
-import { Main, Pokebola } from './styles'
+import { PokeHeader, Nav, Button, ImgPokebola } from "./styles";
+import Pokebola from '../../assets/pokebolaC.svg'
  
 export const Header =  () => {
   return (
-    <Main>
-      <Pokebola>
-        <span className="elipse2"></span>
-        <span className="elipse3"></span>
-        <span className="rectangulo1"></span>
-        <span className="rectangulo2"></span>
-      </Pokebola>
-    </Main>
-  )
+    <PokeHeader>
+      <Nav role="menu">
+        <section className="nav-left">
+          <Button>🐣</Button>
+        </section>
+        <section className="nav-center" />
+        <section className="nav-right">
+          <Button>✋</Button>
+        </section>
+      </Nav>
+      <ImgPokebola src={Pokebola} alt="Pokebola" />
+    </PokeHeader>
+  );
 }

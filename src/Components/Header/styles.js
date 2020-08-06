@@ -1,69 +1,56 @@
-  import styled from 'styled-components'
+import styled from 'styled-components'
+import { colorBlack, colorGrayPrimary, colorWhite } from '../../styles/styles'
 
 
-  export const Main = styled.div`
-    height: 130px;
-    width: 100%;
-    margin-bottom: 20px;
-    position: relative;
-  `
+export const PokeHeader = styled.section`
+  height: 130px;
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+`
 
-  export const Pokebola = styled.div`
-    width: 250px;
-    height: 250px;
-    position: absolute;
-    left: 50%;
-    bottom: 10%;
-    overflow: hidden;
-    hyphens: auto;
-    
-    .elipse2 {
-      position: absolute;
-      width: 170px;
-      height: 170px;
-      left: 5%;
-      bottom: 0;
-      background: #FFFFFF;
-      border-radius: 50%;
-      border: 35px solid #F5F5F5;
-      box-sizing: border-box;
-      opacity: 0.5;
-      z-index: 15;
-    }
-    .elipse3 {
-      position: absolute;
-      width: 105px;
-      height: 105px;
-      left: 18%;
-      bottom: 13%;
-      background: #F5F5F5;
-      border-radius: 50%;
-      opacity: 1;
-      border: 26px solid #FFFFFF;
-      box-sizing: border-box;
-      z-index: 10;
-    }
+export const Nav = styled.nav`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
 
-    .rectangulo1 {
-      position: absolute;
-      width: 40px;
-      height: 20px;
-      left: 15%;
-      bottom: 29%;
-      background: #F5F5F5;
-      opacity: 0.4;
-      z-index: 15;
-
-    }
-
-    .rectangulo2 {
-      position: absolute;
-      width: 40px;
-      height: 20px;
-      left: 48%;
-      bottom: 29%;
-      background: #F5F5F5;
-      opacity: 0.4;
-      z-index: 15;
+  .nav-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   `
+export const ImgPokebola = styled.img`
+  position: absolute;
+  right: -3%;
+  top: -75%;
+`
+
+export const Button = styled.button`
+  padding: .575rem .575rem;
+  border: 1px solid ${colorWhite};
+  background-color: ${colorWhite};
+  border-radius: 50%;
+  color: ${colorBlack};
+  transition: color .15s ease-in-out, background-color .15s ease-in-out;
+  z-index: 10;
+  &:hover {
+    color: ${colorWhite};
+    background-color: ${colorBlack};
+  }
+`
