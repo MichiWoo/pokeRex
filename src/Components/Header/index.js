@@ -1,17 +1,22 @@
 import React from 'react'
-import { PokeHeader, Nav, Button, ImgPokebola } from "./styles";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft, faHamburger} from '@fortawesome/free-solid-svg-icons'
+import { PokeHeader, Nav, Button, ImgPokebola } from "./styles"
 import Pokebola from '../../assets/pokebolaC.svg'
- 
-export const Header =  () => {
+
+const ArrawBack = <FontAwesomeIcon icon={faArrowLeft} />
+const Burger = <FontAwesomeIcon icon={faHamburger} />
+
+export const Header = () => {
   return (
     <PokeHeader>
       <Nav role="menu">
         <section className="nav-left">
-          <Button>🐣</Button>
+          <Button>{ArrawBack}</Button>
         </section>
         <section className="nav-center" />
         <section className="nav-right">
-          <Button>✋</Button>
+          <Button>{Burger}</Button>
         </section>
       </Nav>
       <ImgPokebola src={Pokebola} alt="Pokebola" />

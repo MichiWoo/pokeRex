@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colorBlack, colorGrayPrimary, colorWhite } from '../../styles/styles'
+import { Black, GrayPrimary, White } from '../../styles/GlobalStyles'
 
 
 export const PokeHeader = styled.section`
@@ -12,6 +12,7 @@ export const PokeHeader = styled.section`
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
+  overflow: hidden;
 `
 
 export const Nav = styled.nav`
@@ -43,14 +44,14 @@ export const ImgPokebola = styled.img`
 
 export const Button = styled.button`
   padding: .575rem .575rem;
-  border: 1px solid ${colorWhite};
-  background-color: ${colorWhite};
+  border: 1px solid ${GrayPrimary};
+  background-color: ${GrayPrimary};
   border-radius: 50%;
-  color: ${colorBlack};
+  color: ${Black};
   transition: color .15s ease-in-out, background-color .15s ease-in-out;
   z-index: 10;
   &:hover {
-    color: ${colorWhite};
-    background-color: ${colorBlack};
+    color: ${White};
+    background-color: ${Black};
   }
 `
