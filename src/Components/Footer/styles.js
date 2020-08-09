@@ -2,9 +2,6 @@ import styled from 'styled-components'
 import { GrayDark, GrayPrimary, BluePrimary, BlueSecondary, White, Black} from '../../styles/GlobalStyles'
 
 export const Foot = styled.footer`
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   margin: 40px auto 30px auto;
   display: flex;
