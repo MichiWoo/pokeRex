@@ -24,6 +24,27 @@ export const RedBack = '#FB6C6C'
 export const YellowBack = '#FFCE4B'
 export const GreenLigth = '#beeca9'
 export const GrayBack = '#d7d2cc'
+export const BrownBack = '#c5b280'
+export const PinkBack = '#f1cff0'
+
+export const GreenText = '#3E8570'
+export const RedText = '#DE5050'
+export const BlueText = '#4689C7'
+export const YellowText = '#C99115'
+export const GreenLigthText = '#8cc189'
+export const PurpleText = '#b08ac3'
+export const BrownText = '#a58235'
+export const GrayText = '#9a9696'
+export const PinkText = '#e5aae6'
+
+export const GreenButton = '#61e1ca'
+export const RedButton = '#fd8686'
+export const BlueButton = '#7AC7FF'
+export const YellowButton = '#FFDC7D'
+export const BrownButton = '#b79a59'
+export const GrayButton = '#b7b4b1'
+export const PinkButton = '#e5aae6'
+
 
 export const GlobalStyle = createGlobalStyle`
   body {

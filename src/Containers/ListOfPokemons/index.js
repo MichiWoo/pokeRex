@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Card } from '../../Components/Card'
-import { Container, Item } from './styles'
+import { Container, Button } from './styles'
 
 export const  ListOfPokemons = () => {
   const [result, setResult] = React.useState([])
@@ -9,7 +9,7 @@ export const  ListOfPokemons = () => {
   const arr = []
   
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon/?limit=50')
+    fetch('https://pokeapi.co/api/v2/pokemon')
       .then((response) => response.json())
       .then((data) => setResult(
         data.results.map((item) => {
@@ -17,7 +17,7 @@ export const  ListOfPokemons = () => {
             .then((response) => response.json())
             .then((poke) => {
               let myObj = {
-                id: poke.id,
+                id: parseInt(poke.id),
                 name: poke.name,
                 img: poke.sprites.other.dream_world.front_default,
                 type1: poke.types[0].type.name,
@@ -31,7 +31,11 @@ export const  ListOfPokemons = () => {
     }, [])
     setTimeout(() => {
       setLoad(false)
-    }, 1000)
+    }, 1500)
+  
+  const handleNext = () => {
+    console.log('Here')
+  }
   return (
     <Container>
       {
@@ -42,9 +46,14 @@ export const  ListOfPokemons = () => {
           )
           :
           (
-            poke.map((pokemon, i) => (
-              <Card key={i} pokemon={pokemon}/>
-            ))
+            <>
+              {
+                poke.map((pokemon, i) => (
+                    <Card key={i} pokemon={pokemon} />
+                ))
+              }
+              <Button onClick={handleNext}>Next</Button>
+            </>
           )
       }
     </Container>
