@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 import { fadeIn } from '../../styles/animations'
 import { Link as LinkRouter } from '@reach/router'
-import { GreenBack, BlueBack, RedBack, YellowBack, GreenLigth, GrayBack, GreenText, RedText, BlueText, YellowText, GreenLigthText, PurpleText, PurpleBack, GreenButton, RedButton, BlueButton, YellowButton, BrownBack, BrownText, BrownButton, GrayText, GrayButton, PinkBack, PinkText, PinkButton } from '../../styles/GlobalStyles'
+import {
+  GreenBack, BlueBack, RedBack, YellowBack, GreenLigth, GrayBack, GreenText, RedText, BlueText,
+  YellowText, GreenLigthText, PurpleText, PurpleBack, GreenButton, RedButton, BlueButton, YellowButton,
+  BrownBack, BrownText, BrownButton, GrayText, GrayButton, PinkBack, PinkText, PinkButton,
+  GrayBack_F, GrayButton_F, GrayText_F, PurpleBack_P, PurpleText_P, PurpleButton_P, BrownBack_E, BrownText_E, BrownButton_E
+} from '../../styles/GlobalStyles'
 
 export const Link = styled(LinkRouter)`
   text-decoration: none;
@@ -64,6 +69,15 @@ export const Article = styled.article`
   }
   &.fairy {
     background-color: ${PinkBack};
+  }
+  &.fighting {
+    background-color: ${GrayBack_F};
+  }
+  &.psychic {
+    background-color: ${PurpleBack_P};
+  }
+  &.rock {
+    background-color: ${BrownBack_E};
   }
   &:hover {
     -webkit-transform: scale(1.5);
@@ -129,6 +143,15 @@ export const Type = styled.div`
   &.fairy {
     background-color: ${PinkButton};
   }
+  &.fighting {
+    background-color: ${GrayButton_F};
+  }
+  &.psychic {
+    background-color: ${PurpleButton_P};
+  }
+  &.rock {
+    background-color: ${BrownButton_E};
+  }
 `
 
 export const TextId = styled.h4`
@@ -162,5 +185,13 @@ export const TextId = styled.h4`
   &.fairy {
     color: ${PinkText};
   }
-  
+  &.fighting {
+    color: ${GrayText_F};
+  }
+  &.psychic {
+    color: ${PurpleText_P};
+  }
+  &.rock {
+    color: ${BrownText_E};
+  }
 `

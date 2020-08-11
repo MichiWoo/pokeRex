@@ -26,6 +26,9 @@ export const GreenLigth = '#beeca9'
 export const GrayBack = '#d7d2cc'
 export const BrownBack = '#c5b280'
 export const PinkBack = '#f1cff0'
+export const GrayBack_F = '#a3a5a7'
+export const PurpleBack_P = '#914ca2'
+export const BrownBack_E = '#b3934c'
 
 export const GreenText = '#3E8570'
 export const RedText = '#DE5050'
@@ -36,6 +39,9 @@ export const PurpleText = '#b08ac3'
 export const BrownText = '#a58235'
 export const GrayText = '#9a9696'
 export const PinkText = '#e5aae6'
+export const GrayText_F = '#7b807e'
+export const PurpleText_P = '#7a3882'
+export const BrownText_E = '#88711'
 
 export const GreenButton = '#61e1ca'
 export const RedButton = '#fd8686'
@@ -44,6 +50,10 @@ export const YellowButton = '#FFDC7D'
 export const BrownButton = '#b79a59'
 export const GrayButton = '#b7b4b1'
 export const PinkButton = '#e5aae6'
+export const GrayButton_F = '#8e9292'
+export const PurpleButton_P = '#a363c3'
+export const BrownButton_E = '#927e35'
+
 
 
 export const GlobalStyle = createGlobalStyle`

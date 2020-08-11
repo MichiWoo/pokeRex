@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "standard",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development --hot --history-api-fallback"
   },
   "keywords": [],
