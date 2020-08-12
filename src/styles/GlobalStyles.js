@@ -53,6 +53,7 @@ export const PinkButton = '#e5aae6'
 export const GrayButton_F = '#8e9292'
 export const PurpleButton_P = '#a363c3'
 export const BrownButton_E = '#927e35'
+export const BlueButton_F = '#67c4f1'
 
 
 

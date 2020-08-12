@@ -12,7 +12,10 @@ export const PokeHeader = styled.section`
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  overflow: hidden;
+  @media only screen and (max-width: 600px) {
+    margin: 0 auto;
+    max-width: 95vw;
+  }
 `
 
 export const Nav = styled.nav`

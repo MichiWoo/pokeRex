@@ -37,4 +37,7 @@ export const Button = styled.button`
       line-height: 20px;
     }
   }
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 15px;
+  }
 `;

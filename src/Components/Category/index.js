@@ -12,7 +12,6 @@ export const Category = ({ name, path, colorPrimary, colorSecundary }) => {
   return (
     <Button type="button" colorPrimary={colorPrimary} colorSecundary={colorSecundary} onClick={handleClick}>
       {name}
-
     </Button>
   )
 }

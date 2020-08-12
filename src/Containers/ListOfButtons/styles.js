@@ -5,4 +5,8 @@ export const Section = styled.section`
   flex-direction: row;
   justify-content: space-space-around;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
 `

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { GrayDark, GrayPrimary, Black } from '../../styles/GlobalStyles'
+import { Black, GrayDark, White, GrayPrimary } from '../../styles/GlobalStyles'
 
 export const Div = styled.div`
   padding: 16px;
@@ -8,6 +8,14 @@ export const Div = styled.div`
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap; 
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 90vw;
+    margin: 0 auto;
+  }
 `
 
 export const Title = styled.h1`
@@ -23,4 +31,40 @@ export const Subtitle = styled.h2`
   color: ${Black};
   padding-bottom: 4px;
   align-items: center;
+`
+
+export const Nav = styled.nav`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  `
+
+export const Button = styled.button`
+padding: .575rem .575rem;
+border: 1px solid ${GrayPrimary};
+background-color: ${GrayPrimary};
+border-radius: 50%;
+color: ${Black};
+transition: color .15s ease-in-out, background-color .15s ease-in-out;
+z-index: 10;
+&:hover {
+  color: ${White};
+  background-color: ${Black};
+}
 `

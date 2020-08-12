@@ -5,7 +5,7 @@ import {
   GreenBack, BlueBack, RedBack, YellowBack, GreenLigth, GrayBack, GreenText, RedText, BlueText,
   YellowText, GreenLigthText, PurpleText, PurpleBack, GreenButton, RedButton, BlueButton, YellowButton,
   BrownBack, BrownText, BrownButton, GrayText, GrayButton, PinkBack, PinkText, PinkButton,
-  GrayBack_F, GrayButton_F, GrayText_F, PurpleBack_P, PurpleText_P, PurpleButton_P, BrownBack_E, BrownText_E, BrownButton_E
+  GrayBack_F, GrayButton_F, GrayText_F, PurpleBack_P, PurpleText_P, PurpleButton_P, BrownBack_E, BrownText_E, BrownButton_E, BlueButton_F
 } from '../../styles/GlobalStyles'
 
 export const Link = styled(LinkRouter)`
@@ -79,6 +79,9 @@ export const Article = styled.article`
   &.rock {
     background-color: ${BrownBack_E};
   }
+  &.flying {
+    background-color: ${BlueButton_F};
+  }
   &:hover {
     -webkit-transform: scale(1.5);
     transform: scale(1.5);
@@ -148,6 +151,9 @@ export const Type = styled.div`
   }
   &.psychic {
     background-color: ${PurpleButton_P};
+  }
+  &.flying {
+    background-color: ${BlueButton_F};
   }
   &.rock {
     background-color: ${BrownButton_E};
