@@ -19,6 +19,7 @@ export const Button = styled.button`
   -moz-box-shadow: 1px 4px 5px 0px ${props => props.colorSecundary};
   box-shadow: 1px 4px 5px 0px ${props => props.colorSecundary};
   text-decoration: none;
+  cursor: pointer;
   &[disabled] {
     opacity: .3;
   }

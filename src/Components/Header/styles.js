@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Black, GrayPrimary, White } from '../../styles/GlobalStyles'
+import { Black, GrayPrimary, GrayDark, White } from '../../styles/GlobalStyles'
 
 
 export const PokeHeader = styled.section`
@@ -12,6 +12,7 @@ export const PokeHeader = styled.section`
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   @media only screen and (max-width: 600px) {
     margin: 0 auto;
     max-width: 95vw;
@@ -57,4 +58,11 @@ export const Button = styled.button`
     color: ${White};
     background-color: ${Black};
   }
+`
+export const Title = styled.h1`
+  font-size: 40px;
+  font-weight: 600;
+  color: ${GrayDark};
+  padding-bottom: 8px;
+  align-items: center;
 `
