@@ -30,12 +30,13 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  
 `
-
-
 export const Article = styled.article`
   min-height: 150px;
   display: grid;
+  position: relative;
+  overflow: hidden;
   padding: 20px;  
   border-radius: 30px;
   grid-gap: 10px;
@@ -87,6 +88,12 @@ export const Article = styled.article`
     transform: scale(1.5);
     opacity: 1;
   }
+  .svg-container {
+  width: 50%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 `
 
 export const Img = styled.img`

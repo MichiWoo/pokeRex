@@ -1,44 +1,62 @@
 import styled from 'styled-components'
 import { fadeIn } from '../../styles/animations'
 
-export const Button = styled.button`
+export const Button = styled.div`
+  position: relative;
+  width: 20%;
+  height: 20px;
   border-radius: 15px;
-  color: #fff;
-  height: 32px;
-  display: block;
-  width: 100%;
-  text-align: center;
-  font-weight: bold;
-  font-size: 15px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 15px 30px 30px 30px;
-  background-color: ${props => props.colorPrimary};
-  border: 1px solid ${props => props.colorPrimary};
-  -webkit-box-shadow: 1px 4px 5px 0px ${props => props.colorSecundary};
-  -moz-box-shadow: 1px 4px 5px 0px ${props => props.colorSecundary};
-  box-shadow: 1px 4px 5px 0px ${props => props.colorSecundary};
-  text-decoration: none;
+  padding: 15px 60px 15px 15px;
+  margin: 5px 3px;
   cursor: pointer;
-  &[disabled] {
-    opacity: .3;
-  }
+  overflow: hidden;
   :hover {
-    background-color: ${props => props.colorSecundary};
-    border: 1px solid ${props => props.colorSecundary};
+    color: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 4px 16px rgba(22, 222, 145, 0.6);
+    transition: all 0.2s ease;
   }
-  &[aria-current] {
-    color: #000;
-    &:after {
-      ${fadeIn({ time: '0.5s' })}
-      content: '.';
-      position: absolute;
-      bottom: 5px;
-      font-size: 34px;
-      line-height: 20px;
-    }
+  &.pokebutton.green {
+    background-color: #48D0B0;
   }
-  @media only screen and (max-width: 600px) {
-    margin-bottom: 15px;
+  &.pokebutton.red {
+    background-color: #FA6555;
+  }
+  &.pokebutton.purple {
+    background-color: #9F5BBA;
+  }
+  &.pokebutton.yellow {
+    background-color: #FFCE4B;
+  }
+  &.pokebutton.blue {
+    background-color: #429BED;
   }
 `;
+
+export const ButtonTitle = styled.div`
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+`
+
+export const ImgContainerLeft = styled.div`
+  position: absolute;
+  left: 0;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  bottom: 0;
+  width: 25px;
+`
+
+export const ImgContainerRight = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: -30px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`

@@ -28,3 +28,19 @@ export const Button = styled.button`
   box-shadow: 1px 4px 5px 0px ${PurplePrimary};
   text-decoration: none;
 `
+
+export const Loading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  span {
+    color: ${PurpleBack};
+  }
+`
+
+export const ImgContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;  
+`

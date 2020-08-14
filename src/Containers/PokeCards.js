@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { CardPokemon } from '../Components/CardPokemon'
+import { Loading, ImgContainer } from '../Containers/ListOfPokemons/styles'
+import { SvgPokebolaMini } from '../Components/PokebolaMini'
 
 export const PokeCards = ({ id }) => {
   const [poke, setPoke] = useState([])
@@ -22,7 +24,12 @@ export const PokeCards = ({ id }) => {
       {
         load
           ? (
-              <p>Loading ...</p>
+            <Loading>
+              <span>Loading...</span>
+              <ImgContainer>
+                <SvgPokebolaMini/>
+            </ImgContainer>
+            </Loading>
           )
           : (
             <CardPokemon { ...poke } />

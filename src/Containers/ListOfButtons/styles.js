@@ -3,10 +3,11 @@ import styled from 'styled-components'
 export const Section = styled.section`
   display: flex;
   flex-direction: row;
-  justify-content: space-space-around;
+  justify-content: space-around;
   align-items: center;
   @media only screen and (max-width: 600px) {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 `

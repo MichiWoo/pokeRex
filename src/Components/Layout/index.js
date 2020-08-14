@@ -16,7 +16,6 @@ export const Layout = ({ children, title, subtitle }) => {
         {subtitle && <meta name='description' content={subtitle} />}
       </Helmet>
       <Div>
-        {subtitle && <Subtitle>{subtitle}</Subtitle>}
         {children}
       </Div>
     </>

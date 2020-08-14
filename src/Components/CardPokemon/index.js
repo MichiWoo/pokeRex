@@ -2,22 +2,27 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { Card } from './styles'
+import { navigate } from '@reach/router'
 
 const ArrawBack = <FontAwesomeIcon icon={faArrowLeft} />
 
 export const CardPokemon = (pokemon) => {
-  console.log(pokemon)
+  const handleClick = () => {
+    navigate('/')
+  }
+
+
   return (
     <Card>
       <div className='card_header'>
         <div className='card_header_top'>
-          <button className='card_header_top_button'>
+          <button className='card_header_top_button' onClick={handleClick}>
             {ArrawBack}
           </button>
         </div>
         <div className='card_header_middle'>
           <div className='card_header_middle_name'>{pokemon.name}</div>
-          <div className='card_header_middle_id'>{pokemon.id}</div>
+          <div className='card_header_middle_id'># {pokemon.id}</div>
         </div>
         <div className='card_header_bottom'>
           <div className='card_header_bottom_item'>

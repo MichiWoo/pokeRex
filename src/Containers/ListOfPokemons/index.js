@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Card } from '../../Components/Card'
-import { Container, Button } from './styles'
+import { Container, Button, Loading, ImgContainer } from './styles'
+import { SvgPokebolaMini } from '../../Components/PokebolaMini'
 
 export const  ListOfPokemons = () => {
   const [result, setResult] = useState([])
@@ -10,8 +11,6 @@ export const  ListOfPokemons = () => {
   const [offset, setOffset] = useState(0)
   const arr = []
   
-
-
   useEffect(() => {
     async function fecthPokeData() {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`)
@@ -40,7 +39,6 @@ export const  ListOfPokemons = () => {
   },[])
   
   const handleNext = async () => {
-    console.log('Here Next ✋')
     setLoad(true)
     let _offset = offset + 20
     setOffset(_offset)
@@ -70,7 +68,6 @@ export const  ListOfPokemons = () => {
   }
 
   const handlePrevious = async () => {
-    console.log('Here Previous ✋')
     setLoad(true)
     let _offset = offset - 20
     _offset < 0 ? 0 : _offset
@@ -106,7 +103,12 @@ export const  ListOfPokemons = () => {
         load
           ?
           ( 
-            <p>Loading...</p>
+            <Loading>
+              <span>Loading...</span>
+              <ImgContainer>
+                <SvgPokebolaMini/>
+             </ImgContainer>
+            </Loading>
           )
           :
           (

@@ -90,7 +90,6 @@ export const Card = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    
   }
 
   .card_data {
@@ -106,7 +105,7 @@ export const Card = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: #f7f7ee;
     border-top-right-radius: 35px;
     border-top-left-radius: 35px;
   }

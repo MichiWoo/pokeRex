@@ -14,8 +14,8 @@ export const Footer = () =>  {
         <Link href='https://twitter.com/MichiwooWebs' target='_blank' rel='noreferrer noopener'> @michiwoo</Link>
       </Span>
       <Social>
-        <ButtonLink>{GitHUb}</ButtonLink>
-        <ButtonLink>{Twitter}</ButtonLink>
+        <ButtonLink href='https://github.com/MichiWoo/' rel='noreferer noopener' target='_blank'>{GitHUb}</ButtonLink>
+        <ButtonLink href='https://twitter.com/MichiwooWebs' rel='noreferer noopener' target='_blank'>{Twitter}</ButtonLink>
       </Social>
     </Foot>
   )
