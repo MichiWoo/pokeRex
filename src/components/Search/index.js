@@ -6,7 +6,7 @@ import { Div, Input, Button } from './styles'
 
 const iconSearch = <FontAwesomeIcon icon={faSearch} />
 
-export const Search = ({ onSubmit, onChange }) => {
+export const Search = ({ onSubmit }) => {
   const textPoke = useInputValue('')
 
   const handleSubmit = (event) => {
@@ -14,15 +14,9 @@ export const Search = ({ onSubmit, onChange }) => {
     onSubmit({ textPoke: textPoke.value })
   }
 
-  const handleOnChange = (e) => {
-    e.preventDefault()
-    e.target.value
-    onChange({ textPoke: e.target.value })
-  }
-
   return (
     <Div>
-      <form onSubmit={handleSubmit} onChange={handleOnChange}>
+      <form onSubmit={handleSubmit}>
         <Input name='poke' type='text' placeholder='Busca un pokemon...' {...textPoke} />
         <Button>{iconSearch}</Button>
       </form>
