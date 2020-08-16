@@ -10,6 +10,11 @@ import {
 
 export const Link = styled(LinkRouter)`
   text-decoration: none;
+  :hover {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    z-index: 2;
+  }
 `
 
 export const Header = styled.div`
@@ -82,11 +87,6 @@ export const Article = styled.article`
   }
   &.flying {
     background-color: ${BlueButton_F};
-  }
-  &:hover {
-    -webkit-transform: scale(1.5);
-    transform: scale(1.5);
-    opacity: 1;
   }
   .svg-container {
   width: 50%;

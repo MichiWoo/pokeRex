@@ -1,22 +1,26 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { Card } from './styles'
+import { Card, ImgContainer } from './styles'
 import { navigate } from '@reach/router'
+import { SvgPokebola } from '../Pokebola'
 
 const ArrawBack = <FontAwesomeIcon icon={faArrowLeft} />
 
 export const CardPokemon = (pokemon) => {
   const handleClick = () => {
-    navigate('/')
+    navigate('/pokedex')
   }
 
-
+  const classCard = `card_${pokemon.types[0].type.name}`
+  const classButtonTop = `card_header_top_button ${pokemon.types[0].type.name}`
+  const classButton = `card_header_bottom_item_button ${pokemon.types[0].type.name}`
+  const classCardData = `card_data ${pokemon.types[0].type.name}`
   return (
-    <Card>
+    <Card className={classCard}>
       <div className='card_header'>
         <div className='card_header_top'>
-          <button className='card_header_top_button' onClick={handleClick}>
+          <button className={classButtonTop} onClick={handleClick}>
             {ArrawBack}
           </button>
         </div>
@@ -26,9 +30,9 @@ export const CardPokemon = (pokemon) => {
         </div>
         <div className='card_header_bottom'>
           <div className='card_header_bottom_item'>
-            <button className='card_header_bottom_item_button'>{pokemon.types[0].type.name}</button>
+            <button className={classButton}>{pokemon.types[0].type.name}</button>
             {
-              pokemon.types[1] ? <button className='card_header_bottom_item_button'>{pokemon.types[1].type.name}</button> : null
+              pokemon.types[1] ? <button className={classButton}>{pokemon.types[1].type.name}</button> : null
             }
             
           </div>
@@ -40,7 +44,7 @@ export const CardPokemon = (pokemon) => {
       <div className='card_imagen'>
         <img src={pokemon.sprites.other.dream_world.front_default} />
       </div>
-      <div className='card_data'>
+      <div className={classCardData}>
         <div className='card_data_container'>
           <div className='card_data_navbar'>
             <div className='card_data_navbar_item'>Acerca</div>
@@ -56,6 +60,9 @@ export const CardPokemon = (pokemon) => {
           </div>
         </div>
       </div>
+      <ImgContainer>
+          <SvgPokebola />
+      </ImgContainer>
     </Card>
   )
 }
