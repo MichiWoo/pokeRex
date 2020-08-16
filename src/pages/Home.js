@@ -1,7 +1,7 @@
 import React from 'react'
-import { Layout } from '../Components/Layout'
-import { ListOfButtons } from '../Containers/ListOfButtons'
-import { HeaderGray } from '../Components/HeaderGray'
+import { Layout } from '../components/Layout'
+import { ListOfButtons } from '../containers/ListOfButtons'
+import { HeaderGray } from '../components/HeaderGray'
 
 export const Home = () => {
   return (

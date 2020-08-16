@@ -1,6 +1,6 @@
 import React from 'react'
-import { Layout } from '../Components/Layout'
-import { PokeCards } from '../Containers/PokeCards'
+import { Layout } from '../components/Layout'
+import { PokeCards } from '../containers/PokeCards'
 
 export const Detail = ({detailId}) => {
   return (

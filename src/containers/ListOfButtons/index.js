@@ -1,5 +1,5 @@
 import React from 'react'
-import { Category} from '../../Components/Category'
+import { Category} from '../../components/Category'
 import { Section } from './styles'
 
 export const ListOfButtons = () => {

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Router } from '@reach/router'
-import { Home } from './Pages/Home'
-import { Pokedex } from './Pages/Pokedex'
-import { Detail } from './Pages/Detail'
-import { Footer } from './Components/Footer'
+import { Home } from './pages/Home'
+import { Pokedex } from './pages/Pokedex'
+import { Detail } from './pages/Detail'
+import { Footer } from './components/Footer'
 import { GlobalStyle } from './styles/GlobalStyles'
 
 export const App = () => (

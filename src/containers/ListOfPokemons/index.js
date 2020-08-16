@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Card } from '../../Components/Card'
+import { Card } from '../../components/Card'
 import { Container, Button, Loading, ImgContainer } from './styles'
-import { SvgPokebolaMini } from '../../Components/PokebolaMini'
+import { SvgPokebolaMini } from '../../components/PokebolaMini'
 
-export const  ListOfPokemons = () => {
+export const ListOfPokemons = () => {
+  
   const [result, setResult] = useState([])
   const [poke, setPoke] = useState([])
   const [load, setLoad] = useState('true')

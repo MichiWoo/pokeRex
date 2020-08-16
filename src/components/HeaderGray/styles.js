@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 import { Black, GrayPrimary, GrayDark, White } from '../../styles/GlobalStyles'
+import { Link as LinkRouter } from '@reach/router'
+
+export const Link = styled(LinkRouter)`
+  text-decoration: none;
+`
 
 
 export const PokeHeader = styled.section`
