@@ -308,7 +308,12 @@ export const Card = styled.div`
   .card_data_navbar_item {
     font-size: 16px;
     font-weight: 600;
-    padding-bottom: 10px;
+    padding-bottom: 10px; 
+    color: #a6a6ab;
+    &.active {
+    border-bottom:  2px solid #6C79DB;
+    color: black;
+    }
   }
 
   .card_data_navbar_item:hover {
@@ -321,6 +326,36 @@ export const Card = styled.div`
     display: flex;
     justify-content: center;
     align-content: center;
+  }
+
+  .card_data_content_item_about_container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    box-shadow: 0px 8px 23px rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+  }
+
+  .card_data_content_item_about_container_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 35vw;
+  }
+
+  .card_data_content_item_about_container_item_title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 10px 15px;
+    text-align: center;
+  }
+
+  .card_data_content_item_about_container_item_data {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0px 15px 15px 15px;
+    text-align: center;
   }
 
   @media only screen and (max-width: 600px) {
