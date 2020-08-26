@@ -108,7 +108,7 @@ export const ListOfPokemons = () => {
               <span>Loading...</span>
               <ImgContainer>
                 <SvgPokebolaMini/>
-             </ImgContainer>
+            </ImgContainer>
             </Loading>
           )
           :

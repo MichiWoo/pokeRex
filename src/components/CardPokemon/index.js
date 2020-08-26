@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { Card, ImgContainer } from './styles'
@@ -13,6 +13,41 @@ export const CardPokemon = (pokemon) => {
   const [activeEvolution, setActiveEvolution] = useState('')
   const [activeMovs, setActiveMovs] = useState('')
   const [tabActive, setTabActive] = useState(1)
+  const [dataSpecie, setDataSpecie] = useState([])
+  const [dataEvolution, setDataEvolution] = useState([])
+
+  const arraySpecie = []
+  useEffect(() => {
+    async function fetchDataSpecie() {
+      const responseSpecie = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`)
+      const dataSpecie = await responseSpecie.json()
+      let specieObj = {
+        specie: dataSpecie.genera[7].genus,
+        description: dataSpecie.flavor_text_entries[6].flavor_text,
+        legendary: dataSpecie.is_legendary,
+        baby: dataSpecie.is_baby,
+        mythical: dataSpecie.is_mythical,
+        generation: dataSpecie.generation.name,
+        eggsGroups1: dataSpecie.egg_groups[0].name,
+        eggsGroups2: dataSpecie.egg_groups[1] ? dataSpecie.egg_groups[1].name : null
+      }
+      setDataSpecie(specieObj)
+    }
+    fetchDataSpecie()
+  }, [])
+
+
+  useEffect(() => {
+    async function fetchDataEvolution() {
+      const responseEvolution = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${pokemon.id}`)
+      const dataEvolution = await responseEvolution.json()
+      console.log(dataEvolution)
+      setDataEvolution(dataEvolution)
+    }
+    fetchDataEvolution()
+  }, [])
+
+  
 
   const handleClick = () => {
     navigate('/pokedex')
@@ -71,7 +106,7 @@ export const CardPokemon = (pokemon) => {
             
           </div>
           <div className='card_header_bottom_item'>
-            <span>{pokemon.types[0].type.name} pokemon</span>
+            <span>{dataSpecie.specie}</span>
           </div>
         </div>
       </div>
@@ -92,17 +127,55 @@ export const CardPokemon = (pokemon) => {
                 tabActive === 1
                   ? (
                     <div className='card_data_content_item_about_container'>
-                      <div className='card_data_content_item_about_container_item'>
-                        <p className='card_data_content_item_about_container_item_title'>Peso</p>
-                        <p className='card_data_content_item_about_container_item_data'>
-                          {pokemon.weight / 10} Kgrs.
-                        </p>
+                      <div className='card_data_content_item_about_container_top'>
+                        <div className='card_data_content_item_about_container_top_title'>
+                          {dataSpecie.description}
+                        </div>
                       </div>
-                      <div className='card_data_content_item_about_container_item'>
-                        <p className='card_data_content_item_about_container_item_title'>Altura</p>
-                        <p className='card_data_content_item_about_container_item_data'>
-                          {pokemon.height * 10} cms.
-                        </p>
+                      <div className='card_data_content_item_about_container_medium'>
+                        <div className='card_data_content_item_about_container_medium_item'>
+                          <p className='card_data_content_item_about_container_medium_item_title'>Peso</p>
+                          <p className='card_data_content_item_about_container_medium_item_data'>
+                            {pokemon.weight / 10} Kgrs.
+                          </p>
+                        </div>
+                        <div className='card_data_content_item_about_container_medium_item'>
+                          <p className='card_data_content_item_about_container_medium_item_title'>Altura</p>
+                          <p className='card_data_content_item_about_container_medium_item_data'>
+                            {pokemon.height * 10} cms.
+                          </p>
+                        </div>
+                      </div>
+                      <div className='card_data_content_item_about_container_bottom'>
+                        <div className='card_data_content_item_about_container_bottom_title'>
+                          <span>Breeding</span>
+                        </div>
+                        <div className='card_data_content_item_about_container_bottom_grid'>
+                          <div className='card_data_content_item_about_container_bottom_grid_item'>
+                            <div className='card_data_content_item_about_container_bottom_grid_item_title'>
+                              Egg Groups
+                            </div>
+                            <div className='card_data_content_item_about_container_bottom_grid_item_data'>
+                              {dataSpecie.eggsGroups1}
+                            </div>
+                          </div>
+                          <div className='card_data_content_item_about_container_bottom_grid_item'>
+                            <div className='card_data_content_item_about_container_bottom_grid_item_title'>
+                              Egg Cycle
+                            </div>
+                            <div className='card_data_content_item_about_container_bottom_grid_item_data'>
+                              {dataSpecie.eggsGroups2}
+                            </div>
+                          </div>
+                          <div className='card_data_content_item_about_container_bottom_grid_item'>
+                            <div className='card_data_content_item_about_container_bottom_grid_item_title'>
+                              Base Experience
+                            </div>
+                            <div className='card_data_content_item_about_container_bottom_grid_item_data'>
+                              {pokemon.base_experience}
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )
@@ -112,13 +185,26 @@ export const CardPokemon = (pokemon) => {
                 tabActive === 2
                   ? (
                     <div className='card_data_content_item_base_container'>
-                      <div className='card_data_content_item_base_item'>
-                        <div className='card_data_content_item_base_item_table'>
-                          HP 45 
-                          ATTACK 60
-                          DEFENSE 48
-                        </div>
+                      <div className='card_data_content_item_base_container_stats'>
+                        {
+                          pokemon.stats.map((stats, index) => {
+                            return (
+                              <div className='card_data_content_item_base_stats_item' key={index}>
+                                <div className='card_data_content_item_base_stats_item_title'>
+                                  {stats.stat.name}
+                                </div>
+                                <div className='card_data_content_item_base_stats_item_data'>
+                                  {stats.base_stat}
+                                </div>
+                                <div className='card_data_content_item_base_stats_item_line'>
+                                  <progress className='card_data_content_item_base_stats_item_line_progress' max='100' value={stats.base_stat}></progress>
+                                </div>
+                              </div>
+                            )
+                          })
+                        }
                       </div>
+                      
                       <div className='card_data_content_item_base_item'>
                         <div className='card_data_content_item_base_item_footer'>
                           Type defenses
