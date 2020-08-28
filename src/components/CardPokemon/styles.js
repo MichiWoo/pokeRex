@@ -439,14 +439,12 @@ export const Card = styled.div`
   }
 
   .card_data_content_item_base_stats_item_line {
+    width: 45vw;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-content: center;
   }
-  .card_data_content_item_base_stats_item_line_progress {
-    align-items: center;
-  }
-
+  
   @media only screen and (max-width: 600px) {
     width: 100%;
   }

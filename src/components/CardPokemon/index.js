@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ProgressBar } from '../ProgressBar'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { Card, ImgContainer } from './styles'
 import { navigate } from '@reach/router'
@@ -60,26 +61,34 @@ export const CardPokemon = (pokemon) => {
 
   const handleClickTabs = (event) => {
     const tab = parseInt(event.target.dataset.number)
-    setActiveAbout('')
-    setActiveBase('')
-    setActiveEvolution('')
-    setActiveMovs('')
-
+    console.log(tab)
     switch (tab) {
       case 1:
         setActiveAbout('active')
+        setActiveBase('')
+        setActiveEvolution('')
+        setActiveMovs('')
         setTabActive(1)
         break
       case 2:
         setActiveBase('active')
+        setActiveAbout('')
+        setActiveEvolution('')
+        setActiveMovs('')
         setTabActive(2)
       break
       case 3:
         setActiveEvolution('active')
+        setActiveAbout('')
+        setActiveBase('')
+        setActiveMovs('')
         setTabActive(3)
         break
       case 4:
         setActiveMovs('active')
+        setActiveAbout('')
+        setActiveBase('')
+        setActiveEvolution('')
         setTabActive(4)
         break
     }
@@ -179,58 +188,43 @@ export const CardPokemon = (pokemon) => {
                       </div>
                     </div>
                   )
-                  : null
-              }
-              {
-                tabActive === 2
-                  ? (
-                    <div className='card_data_content_item_base_container'>
-                      <div className='card_data_content_item_base_container_stats'>
-                        {
-                          pokemon.stats.map((stats, index) => {
-                            return (
-                              <div className='card_data_content_item_base_stats_item' key={index}>
-                                <div className='card_data_content_item_base_stats_item_title'>
-                                  {stats.stat.name}
+                  : tabActive === 2
+                    ? (
+                      <div className='card_data_content_item_base_container'>
+                        <div className='card_data_content_item_base_container_stats'>
+                          {
+                            pokemon.stats.map((stats, index) => {
+                              return (
+                                <div className='card_data_content_item_base_stats_item' key={index}>
+                                  <div className='card_data_content_item_base_stats_item_title'>
+                                    {stats.stat.name}
+                                  </div>
+                                  <div className='card_data_content_item_base_stats_item_data'>
+                                    {stats.base_stat}
+                                  </div>
+                                  <div className='card_data_content_item_base_stats_item_line'>
+                                    <ProgressBar width={stats.base_stat} />
+                                  </div>
                                 </div>
-                                <div className='card_data_content_item_base_stats_item_data'>
-                                  {stats.base_stat}
-                                </div>
-                                <div className='card_data_content_item_base_stats_item_line'>
-                                  <progress className='card_data_content_item_base_stats_item_line_progress' max='100' value={stats.base_stat}></progress>
-                                </div>
-                              </div>
-                            )
-                          })
-                        }
-                      </div>
-                      
-                      <div className='card_data_content_item_base_item'>
-                        <div className='card_data_content_item_base_item_footer'>
-                          Type defenses
+                              )
+                            })
+                          }
                         </div>
                       </div>
-                    </div>
-                    )
-                  : null
-              }
-              {
-                tabActive === 3
-                  ? (
-                    <div className='card_data_content_item_evolution_container'>
-                      Evolution
-                    </div>
-                    )
-                  : null
-              }
-              {
-                tabActive === 4
-                  ? (
-                    <div className='card_data_content_item_movs_container'>
-                      Movs
-                    </div>
-                    )
-                  : null
+                      )
+                    : tabActive === 3
+                      ? (
+                        <div className='card_data_content_item_evolution_container'>
+                          Evolution
+                        </div>
+                        )
+                      : tabActive === 4
+                        ? (
+                          <div className='card_data_content_item_movs_container'>
+                            Movs
+                          </div>
+                          )
+                        : null
               }
               
             </div>
