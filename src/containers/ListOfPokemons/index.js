@@ -30,11 +30,13 @@ export const ListOfPokemons = () => {
             }
             arr.push(myObj)
           })
+          
         setPoke(arr)
       })
     }
     fecthPokeData()
     setTimeout(() => {
+      window.scrollTo(0, 0)
       setLoad(false)
     }, 1500)
   },[])
@@ -63,6 +65,7 @@ export const ListOfPokemons = () => {
         })
       setPoke(arr)
       setTimeout(() => {
+        window.scrollTo(0, 0)
         setLoad(false)
       }, 1500)
     })
@@ -94,6 +97,7 @@ export const ListOfPokemons = () => {
         })
       setPoke(arr)
       setTimeout(() => {
+        window.scrollTo(0, 0)
         setLoad(false)
       }, 1500)
     })

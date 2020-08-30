@@ -14,15 +14,12 @@ export const CardPokemon = (pokemon) => {
   const [active, setActive] = useState(0)
   const [dataSpecie, setDataSpecie] = useState([])
   const [dataEvolution, setDataEvolution] = useState([])
-  console.log('Here 🐤')
   console.log(pokemon)
   useEffect(() => {
 
     async function fetchDataSpecie() {
-      console.log('Here 🐤🐤🐤')
       const responseSpecie = await fetch(pokemon.species.url)
       const dataSpecie = await responseSpecie.json()
-      console.log(dataSpecie.evolution_chain.url)
       let specieObj = {
         specie: dataSpecie.genera[7].genus,
         description: dataSpecie.flavor_text_entries[6].flavor_text,
@@ -34,20 +31,16 @@ export const CardPokemon = (pokemon) => {
         eggsGroups2: dataSpecie.egg_groups[1] ? dataSpecie.egg_groups[1].name : null,
         evolution: dataSpecie.evolution_chain.url
       }
-      console.log('Here 🐤🐤🐤🐤')
       setDataSpecie(specieObj)
       fetchDataEvolution(specieObj.evolution)
     }
 
     async function fetchDataEvolution(url) {
-      console.log('Here 🐤🐤🐤🐤🐤')
-      console.log(dataSpecie)
       const responseEvolution = await fetch(url)
       const dataEvol = await responseEvolution.json()
-      console.log(dataEvol)
+      
       setDataEvolution(dataEvol)
     }
-    console.log('Here 🐤🐤')
     fetchDataSpecie()
   }, [])
 
@@ -94,6 +87,9 @@ export const CardPokemon = (pokemon) => {
       </div>
       <div className='card_imagen'>
         <img src={pokemon.sprites.other.dream_world.front_default} />
+        <ImgContainer>
+          <SvgPokebola />
+        </ImgContainer>
       </div>
       <div className={classCardData}>
         <div className='card_data_container'>
@@ -233,9 +229,7 @@ export const CardPokemon = (pokemon) => {
           </div>
         </div>
       </div>
-      <ImgContainer>
-          <SvgPokebola />
-      </ImgContainer>
+      
     </Card>
   )
 }
