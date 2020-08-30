@@ -11,24 +11,15 @@ const ArrawBack = <FontAwesomeIcon icon={faArrowLeft} />
 const LongArrowAltRight = <FontAwesomeIcon icon={faLongArrowAltRight} />
 
 export const CardPokemon = (pokemon) => {
-  const [activeAbout, setActiveAbout] = useState('active')
-  const [activeBase, setActiveBase] = useState('')
-  const [activeEvolution, setActiveEvolution] = useState('')
-  const [activeMovs, setActiveMovs] = useState('')
-  const [tabActive, setTabActive] = useState(1)
+  const [active, setActive] = useState(0)
   const [dataSpecie, setDataSpecie] = useState([])
   const [dataEvolution, setDataEvolution] = useState([])
-
+  console.log('Here 🐤')
+  console.log(pokemon)
   useEffect(() => {
 
-    async function fetchDataEvolution(url) {
-      console.log(dataSpecie)
-      const responseEvolution = await fetch(url)
-      const dataEvolution = await responseEvolution.json()
-      setDataEvolution(dataEvolution)
-    }
-
     async function fetchDataSpecie() {
+      console.log('Here 🐤🐤🐤')
       const responseSpecie = await fetch(pokemon.species.url)
       const dataSpecie = await responseSpecie.json()
       console.log(dataSpecie.evolution_chain.url)
@@ -43,10 +34,20 @@ export const CardPokemon = (pokemon) => {
         eggsGroups2: dataSpecie.egg_groups[1] ? dataSpecie.egg_groups[1].name : null,
         evolution: dataSpecie.evolution_chain.url
       }
+      console.log('Here 🐤🐤🐤🐤')
       setDataSpecie(specieObj)
       fetchDataEvolution(specieObj.evolution)
-      
     }
+
+    async function fetchDataEvolution(url) {
+      console.log('Here 🐤🐤🐤🐤🐤')
+      console.log(dataSpecie)
+      const responseEvolution = await fetch(url)
+      const dataEvol = await responseEvolution.json()
+      console.log(dataEvol)
+      setDataEvolution(dataEvol)
+    }
+    console.log('Here 🐤🐤')
     fetchDataSpecie()
   }, [])
 
@@ -59,38 +60,10 @@ export const CardPokemon = (pokemon) => {
   const classButton = `card_header_bottom_item_button ${pokemon.types[0].type.name}`
   const classCardData = `card_data ${pokemon.types[0].type.name}`
 
-  const handleClickTabs = (event) => {
-    const tab = parseInt(event.target.dataset.number)
-    console.log(tab)
-    switch (tab) {
-      case 1:
-        setActiveAbout('active')
-        setActiveBase('')
-        setActiveEvolution('')
-        setActiveMovs('')
-        setTabActive(1)
-        break
-      case 2:
-        setActiveBase('active')
-        setActiveAbout('')
-        setActiveEvolution('')
-        setActiveMovs('')
-        setTabActive(2)
-      break
-      case 3:
-        setActiveEvolution('active')
-        setActiveAbout('')
-        setActiveBase('')
-        setActiveMovs('')
-        setTabActive(3)
-        break
-      case 4:
-        setActiveMovs('active')
-        setActiveAbout('')
-        setActiveBase('')
-        setActiveEvolution('')
-        setTabActive(4)
-        break
+  const handleClickTabs = e => {
+    const index = parseInt(e.target.id, 0)
+    if (index !== active) {
+      setActive(index)
     }
   }
 
@@ -125,131 +98,137 @@ export const CardPokemon = (pokemon) => {
       <div className={classCardData}>
         <div className='card_data_container'>
           <div className='card_data_navbar'>
-            <div data-number='1'className={`card_data_navbar_item ${activeAbout}`} onClick={handleClickTabs}>Acerca</div>
-            <div data-number='2'className={`card_data_navbar_item ${activeBase}`} onClick={handleClickTabs}>Base</div>
-            <div data-number='3'className={`card_data_navbar_item ${activeEvolution}`} onClick={handleClickTabs}>Evolución</div>
-            <div data-number='4'className={`card_data_navbar_item ${activeMovs}`} onClick={handleClickTabs}>Moves</div>
+            <Tabs>
+              <Tab onClick={handleClickTabs} active={active === 0} id={0}>
+                Acerca
+              </Tab>
+
+              <Tab onClick={handleClickTabs} active={active === 1} id={1}>
+                Base
+              </Tab>
+
+              <Tab onClick={handleClickTabs} active={active === 2} id={2}>
+                Evolución
+              </Tab>
+
+              <Tab onClick={handleClickTabs} active={active === 3} id={3}>
+                Movs.
+              </Tab>
+
+            </Tabs>
           </div>
           <div className='card_data_content'>
             <div className='card_data_content_item'>
-              {
-                tabActive === 1
-                  ? (
-                    <div className='card_data_content_item_about_container'>
-                      <div className='card_data_content_item_about_container_top'>
-                        <div className='card_data_content_item_about_container_top_title'>
-                          {dataSpecie.description}
+              <Content active={active === 0}>
+                <div className='card_data_content_item_about_container'>
+                  <div className='card_data_content_item_about_container_top'>
+                    <div className='card_data_content_item_about_container_top_title'>
+                      {dataSpecie.description}
+                    </div>
+                  </div>
+                  <div className='card_data_content_item_about_container_medium'>
+                    <div className='card_data_content_item_about_container_medium_item'>
+                      <p className='card_data_content_item_about_container_medium_item_title'>Peso</p>
+                      <p className='card_data_content_item_about_container_medium_item_data'>
+                        {pokemon.weight / 10} Kgrs.
+                      </p>
+                    </div>
+                    <div className='card_data_content_item_about_container_medium_item'>
+                      <p className='card_data_content_item_about_container_medium_item_title'>Altura</p>
+                      <p className='card_data_content_item_about_container_medium_item_data'>
+                        {pokemon.height * 10} cms.
+                      </p>
+                    </div>
+                  </div>
+                  <div className='card_data_content_item_about_container_bottom'>
+                    <div className='card_data_content_item_about_container_bottom_title'>
+                      <span>Breeding</span>
+                    </div>
+                    <div className='card_data_content_item_about_container_bottom_grid'>
+                      <div className='card_data_content_item_about_container_bottom_grid_item'>
+                        <div className='card_data_content_item_about_container_bottom_grid_item_title'>
+                          Egg Groups
+                        </div>
+                        <div className='card_data_content_item_about_container_bottom_grid_item_data'>
+                          {dataSpecie.eggsGroups1}
                         </div>
                       </div>
-                      <div className='card_data_content_item_about_container_medium'>
-                        <div className='card_data_content_item_about_container_medium_item'>
-                          <p className='card_data_content_item_about_container_medium_item_title'>Peso</p>
-                          <p className='card_data_content_item_about_container_medium_item_data'>
-                            {pokemon.weight / 10} Kgrs.
-                          </p>
+                      <div className='card_data_content_item_about_container_bottom_grid_item'>
+                        <div className='card_data_content_item_about_container_bottom_grid_item_title'>
+                          Egg Cycle
                         </div>
-                        <div className='card_data_content_item_about_container_medium_item'>
-                          <p className='card_data_content_item_about_container_medium_item_title'>Altura</p>
-                          <p className='card_data_content_item_about_container_medium_item_data'>
-                            {pokemon.height * 10} cms.
-                          </p>
+                        <div className='card_data_content_item_about_container_bottom_grid_item_data'>
+                          {dataSpecie.eggsGroups2}
                         </div>
                       </div>
-                      <div className='card_data_content_item_about_container_bottom'>
-                        <div className='card_data_content_item_about_container_bottom_title'>
-                          <span>Breeding</span>
+                      <div className='card_data_content_item_about_container_bottom_grid_item'>
+                        <div className='card_data_content_item_about_container_bottom_grid_item_title'>
+                          Base Experience
                         </div>
-                        <div className='card_data_content_item_about_container_bottom_grid'>
-                          <div className='card_data_content_item_about_container_bottom_grid_item'>
-                            <div className='card_data_content_item_about_container_bottom_grid_item_title'>
-                              Egg Groups
-                            </div>
-                            <div className='card_data_content_item_about_container_bottom_grid_item_data'>
-                              {dataSpecie.eggsGroups1}
-                            </div>
-                          </div>
-                          <div className='card_data_content_item_about_container_bottom_grid_item'>
-                            <div className='card_data_content_item_about_container_bottom_grid_item_title'>
-                              Egg Cycle
-                            </div>
-                            <div className='card_data_content_item_about_container_bottom_grid_item_data'>
-                              {dataSpecie.eggsGroups2}
-                            </div>
-                          </div>
-                          <div className='card_data_content_item_about_container_bottom_grid_item'>
-                            <div className='card_data_content_item_about_container_bottom_grid_item_title'>
-                              Base Experience
-                            </div>
-                            <div className='card_data_content_item_about_container_bottom_grid_item_data'>
-                              {pokemon.base_experience}
-                            </div>
-                          </div>
+                        <div className='card_data_content_item_about_container_bottom_grid_item_data'>
+                          {pokemon.base_experience}
                         </div>
                       </div>
                     </div>
-                  )
-                  : tabActive === 2
-                    ? (
-                      <div className='card_data_content_item_base_container'>
-                        <div className='card_data_content_item_base_container_stats'>
-                          {
-                            pokemon.stats.map((stats, index) => {
-                              return (
-                                <div className='card_data_content_item_base_stats_item' key={index}>
-                                  <div className='card_data_content_item_base_stats_item_title'>
-                                    {stats.stat.name}
-                                  </div>
-                                  <div className='card_data_content_item_base_stats_item_data'>
-                                    {stats.base_stat}
-                                  </div>
-                                  <div className='card_data_content_item_base_stats_item_line'>
-                                    <ProgressBar width={stats.base_stat} />
-                                  </div>
-                                </div>
-                              )
-                            })
-                          }
-                        </div>
-                      </div>
-                      )
-                    : tabActive === 3
-                      ? (
-                        <div className='card_data_content_item_evolution_container'>
-                          <div className='card_data_content_item_evolution_container_title'>
-                            <span>Evolution Chain</span>
-                          </div>
-                          <div className='card_data_content_item_evolution_container_evolutions'>
-                            <div className='card_data_content_item_evolution_container_evolutions_row'>
-                              <div className='card_data_content_item_evolution_container_evolutions_row_poke1'>
-                                <div className='card_data_content_item_evolution_container_evolutions_row_poke1_name'>
-                                  <span>{dataEvolution.chain.species.name}</span>
-                                </div>
-                                <div className='card_data_content_item_evolution_container_evolutions_row_poke1_img'></div>
-                              </div>
-                              <div className='card_data_content_item_evolution_container_evolutions_row_poketo'>
-                                <div className='card_data_content_item_evolution_container_evolutions_row_poketo_icon'>
-                                  {LongArrowAltRight}
-                                </div>
-                                <span>{dataEvolution.chain.evolves_to[0].evolution_details[0].min_level}</span>
-                              </div>
-                              <div className='card_data_content_item_evolution_container_evolutions_row_poke2'>
-                                <div className='card_data_content_item_evolution_container_evolutions_row_poke2_name'>
-                                  <span>{dataEvolution.chain.evolves_to[0].species.name}</span>
-                                </div>
-                              </div>
+                  </div>
+                </div>
+              </Content>
+              <Content active={active === 1}>
+                <div className='card_data_content_item_base_container'>
+                  <div className='card_data_content_item_base_container_stats'>
+                    {
+                      pokemon.stats.map((stats, index) => {
+                        return (
+                          <div className='card_data_content_item_base_stats_item' key={index}>
+                            <div className='card_data_content_item_base_stats_item_title'>
+                              {stats.stat.name}
+                            </div>
+                            <div className='card_data_content_item_base_stats_item_data'>
+                              {stats.base_stat}
+                            </div>
+                            <div className='card_data_content_item_base_stats_item_line'>
+                              <ProgressBar width={stats.base_stat} />
                             </div>
                           </div>
-                        </div>
                         )
-                      : tabActive === 4
-                        ? (
-                          <div className='card_data_content_item_movs_container'>
-                            Movs
-                          </div>
-                          )
-                        : null
-              }
-              
+                      })
+                    }
+                  </div>
+                </div>
+              </Content>
+              <Content active={active === 2}>
+                <div className='card_data_content_item_evolution_container'>
+                  <div className='card_data_content_item_evolution_container_title'>
+                    <span>Evolution Chain</span>
+                  </div>
+                  <div className='card_data_content_item_evolution_container_evolutions'>
+                    <div className='card_data_content_item_evolution_container_evolutions_row'>
+                      <div className='card_data_content_item_evolution_container_evolutions_row_poke1'>
+                        <div className='card_data_content_item_evolution_container_evolutions_row_poke1_name'>
+                          <span>{dataEvolution.chain? dataEvolution.chain.species.name : ''}</span>
+                        </div>
+                        <div className='card_data_content_item_evolution_container_evolutions_row_poke1_img'></div>
+                      </div>
+                      <div className='card_data_content_item_evolution_container_evolutions_row_poketo'>
+                        <div className='card_data_content_item_evolution_container_evolutions_row_poketo_icon'>
+                          {LongArrowAltRight}
+                        </div>
+                        <span>{dataEvolution.chain? dataEvolution.chain.evolves_to[0].evolution_details[0].min_level : ''}</span>
+                      </div>
+                      <div className='card_data_content_item_evolution_container_evolutions_row_poke2'>
+                        <div className='card_data_content_item_evolution_container_evolutions_row_poke2_name'>
+                          <span>{dataEvolution.chain? dataEvolution.chain.evolves_to[0].species.name : ''}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Content>
+              <Content active={active === 3}>
+                <div className='card_data_content_item_movs_container'>
+                  Movs
+                </div>
+              </Content>
             </div>
           </div>
         </div>

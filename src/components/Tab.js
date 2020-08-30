@@ -1,28 +1,31 @@
 import styled from "styled-components";
 export const Tabs = styled.div`
-  overflow: hidden;
-  background: #fff;
-  font-family: Open Sans;
-  height: 3em;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  padding-bottom: 10px; 
+  color: #a6a6ab;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
 `;
 
 export const Tab = styled.button`
+  width: 15vw;
+  height: 42px;
+  margin: 0 0.5vw;
+  font-size: 16px;
+  background-color: #f7f7ee;
   border: none;
   outline: none;
-  cursor: pointer;
-  width: 40%;
-  position: relative;
-
-  margin-right: 0.1em;
-  font-size: 1em;
-  border: ${props => (props.active ? "1px solid #ccc" : "")};
-  border-bottom: ${props => (props.active ? "none" : "")};
-  background-color: ${props => (props.active ? "white" : "lightgray")};
-  height: ${props => (props.active ? "3em" : "2.6em; top:.4em")};
-  transition: background-color 0.5s ease-in-out;
-
+  border-bottom: ${props => (props.active ? "2px solid #6C79DB" : "")};
+  color: ${props => (props.active ? "black" : "#a6a6ab")};
   :hover {
-    background-color: white;
+    border-bottom: 2px solid #6C79DB;
+    color: #6C79DB;
+    cursor: pointer;
   }
 `;
 export const Content = styled.div`

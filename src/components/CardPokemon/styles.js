@@ -300,11 +300,11 @@ export const Card = styled.div`
   
 
   .card_data_navbar {
-    margin: 10px 0 10px 0;
-    width: 90%;
+    margin: 10px auto;
+    width: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
+    align-content: center;
   }
 
   .card_data_navbar_item {
@@ -332,11 +332,11 @@ export const Card = styled.div`
   }
 
   .card_data_content_item_about_container_top {
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
   }
 
   .card_data_content_item_about_container_top_title {
-    margin: 5px 10px;
     font-size: 14px;
   }
 
@@ -411,9 +411,12 @@ export const Card = styled.div`
       text-transform: capitalize ;
     }
   }
-  .card_data_content_item_base_container_stats {
-    width: 90vw;
+  .card_data_content_item_base_container {
+    width: 100%;
     margin: 15px auto;
+  }
+  .card_data_content_item_base_container_stats {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -446,7 +449,7 @@ export const Card = styled.div`
   }
 
   .card_data_content_item_evolution_container {
-    width: 80vw;
+    width: 90vw;
     margin: 15px auto;
     display: flex;
     flex-direction: column;
@@ -455,7 +458,7 @@ export const Card = styled.div`
   }
 
   .card_data_content_item_evolution_container_title {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 400;
   }
   .card_data_content_item_evolution_container_evolutions {
@@ -475,7 +478,7 @@ export const Card = styled.div`
 
   .card_data_content_item_evolution_container_evolutions_row_poke1_name {
     & span {
-      font-size: 24px;
+      font-size: 16px;
       font-weight: 300;
       color: #424040;
     }
@@ -486,16 +489,20 @@ export const Card = styled.div`
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    & span {
+      font-size: 16px;
+      font-weight: 600;
+    }
   }
 
   .card_data_content_item_evolution_container_evolutions_row_poketo_icon {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
   }
 
   .card_data_content_item_evolution_container_evolutions_row_poke2_name {
     & span {
-      font-size: 24px;
+      font-size: 16px;
       font-weight: 300;
       color: #424040;
     }
