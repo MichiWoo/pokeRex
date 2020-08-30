@@ -19,7 +19,7 @@ export const Pokedex = () => {
   }
 
   return (
-    <Layout title='PokeRex' subtitle='Aplicación para buscar pokemones'>
+    <Layout title='PokeRex' subtitle='Aplicación para buscar pokémons'>
       <HeaderGray />
       <Search onSubmit={onSubmit} />
       {

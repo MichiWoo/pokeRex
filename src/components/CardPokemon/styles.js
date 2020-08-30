@@ -444,6 +444,62 @@ export const Card = styled.div`
     justify-content: flex-start;
     align-content: center;
   }
+
+  .card_data_content_item_evolution_container {
+    width: 80vw;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .card_data_content_item_evolution_container_title {
+    font-size: 24px;
+    font-weight: 400;
+  }
+  .card_data_content_item_evolution_container_evolutions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+
+  .card_data_content_item_evolution_container_evolutions_row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  .card_data_content_item_evolution_container_evolutions_row_poke1_name {
+    & span {
+      font-size: 24px;
+      font-weight: 300;
+      color: #424040;
+    }
+  }
+
+  .card_data_content_item_evolution_container_evolutions_row_poketo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .card_data_content_item_evolution_container_evolutions_row_poketo_icon {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .card_data_content_item_evolution_container_evolutions_row_poke2_name {
+    & span {
+      font-size: 24px;
+      font-weight: 300;
+      color: #424040;
+    }
+  }
   
   @media only screen and (max-width: 600px) {
     width: 100%;

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ProgressBar } from '../ProgressBar'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { Card, ImgContainer } from './styles'
 import { navigate } from '@reach/router'
+import { Tab, Tabs, Content } from '../Tab'
+import { ProgressBar } from '../ProgressBar'
+import { Card, ImgContainer } from './styles'
 import { SvgPokebola } from '../Pokebola'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 
 const ArrawBack = <FontAwesomeIcon icon={faArrowLeft} />
+const LongArrowAltRight = <FontAwesomeIcon icon={faLongArrowAltRight} />
 
 export const CardPokemon = (pokemon) => {
   const [activeAbout, setActiveAbout] = useState('active')
@@ -17,11 +19,19 @@ export const CardPokemon = (pokemon) => {
   const [dataSpecie, setDataSpecie] = useState([])
   const [dataEvolution, setDataEvolution] = useState([])
 
-  const arraySpecie = []
   useEffect(() => {
+
+    async function fetchDataEvolution(url) {
+      console.log(dataSpecie)
+      const responseEvolution = await fetch(url)
+      const dataEvolution = await responseEvolution.json()
+      setDataEvolution(dataEvolution)
+    }
+
     async function fetchDataSpecie() {
-      const responseSpecie = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`)
+      const responseSpecie = await fetch(pokemon.species.url)
       const dataSpecie = await responseSpecie.json()
+      console.log(dataSpecie.evolution_chain.url)
       let specieObj = {
         specie: dataSpecie.genera[7].genus,
         description: dataSpecie.flavor_text_entries[6].flavor_text,
@@ -30,28 +40,18 @@ export const CardPokemon = (pokemon) => {
         mythical: dataSpecie.is_mythical,
         generation: dataSpecie.generation.name,
         eggsGroups1: dataSpecie.egg_groups[0].name,
-        eggsGroups2: dataSpecie.egg_groups[1] ? dataSpecie.egg_groups[1].name : null
+        eggsGroups2: dataSpecie.egg_groups[1] ? dataSpecie.egg_groups[1].name : null,
+        evolution: dataSpecie.evolution_chain.url
       }
       setDataSpecie(specieObj)
+      fetchDataEvolution(specieObj.evolution)
+      
     }
     fetchDataSpecie()
   }, [])
 
-
-  useEffect(() => {
-    async function fetchDataEvolution() {
-      const responseEvolution = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${pokemon.id}`)
-      const dataEvolution = await responseEvolution.json()
-      console.log(dataEvolution)
-      setDataEvolution(dataEvolution)
-    }
-    fetchDataEvolution()
-  }, [])
-
-  
-
   const handleClick = () => {
-    navigate('/pokedex')
+    navigate('/')
   }
 
   const classCard = `card_${pokemon.types[0].type.name}`
@@ -215,7 +215,30 @@ export const CardPokemon = (pokemon) => {
                     : tabActive === 3
                       ? (
                         <div className='card_data_content_item_evolution_container'>
-                          Evolution
+                          <div className='card_data_content_item_evolution_container_title'>
+                            <span>Evolution Chain</span>
+                          </div>
+                          <div className='card_data_content_item_evolution_container_evolutions'>
+                            <div className='card_data_content_item_evolution_container_evolutions_row'>
+                              <div className='card_data_content_item_evolution_container_evolutions_row_poke1'>
+                                <div className='card_data_content_item_evolution_container_evolutions_row_poke1_name'>
+                                  <span>{dataEvolution.chain.species.name}</span>
+                                </div>
+                                <div className='card_data_content_item_evolution_container_evolutions_row_poke1_img'></div>
+                              </div>
+                              <div className='card_data_content_item_evolution_container_evolutions_row_poketo'>
+                                <div className='card_data_content_item_evolution_container_evolutions_row_poketo_icon'>
+                                  {LongArrowAltRight}
+                                </div>
+                                <span>{dataEvolution.chain.evolves_to[0].evolution_details[0].min_level}</span>
+                              </div>
+                              <div className='card_data_content_item_evolution_container_evolutions_row_poke2'>
+                                <div className='card_data_content_item_evolution_container_evolutions_row_poke2_name'>
+                                  <span>{dataEvolution.chain.evolves_to[0].species.name}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                         )
                       : tabActive === 4

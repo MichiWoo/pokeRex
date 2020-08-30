@@ -10,8 +10,7 @@ export const App = () => (
   <>
     <GlobalStyle />
     <Router>
-      <Home path='/' />
-      <Pokedex path='/pokedex' />
+      <Pokedex path='/' />
       <Detail path='/detail/:detailId' />
     </Router>
     <Footer />

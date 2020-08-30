@@ -87,7 +87,8 @@ export const ListOfPokemons = () => {
             name: poke.name,
             img: poke.sprites.other.dream_world.front_default,
             type1: poke.types[0].type.name,
-            type2: poke.types[1] ? poke.types[1].type.name : ''
+            type2: poke.types[1] ? poke.types[1].type.name : '',
+            specie: poke.species.url
           }
           arr.push(myObj)
         })

@@ -32,9 +32,12 @@ export const Sidebar = styled.div`
 
 export const Wrapper = styled.div`
   grid-area: wrapper;
-  display: flex;
   justify-content: center;
-  align-items: center;
+  align-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   
 `
 export const Article = styled.article`
@@ -98,7 +101,12 @@ export const Article = styled.article`
 
 export const Img = styled.img`
   ${fadeIn()}
+  width: 100%;
+  max-width: 100%;
   max-width: -webkit-fill-available;
+  max-width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  max-width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  max-width: fill-available;
 `
 
 export const Title = styled.p`
