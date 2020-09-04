@@ -10,11 +10,6 @@ import {
 
 export const Link = styled(LinkRouter)`
   text-decoration: none;
-  :hover {
-    -webkit-transform: scale(1.5);
-    transform: scale(1.5);
-    z-index: 2;
-  }
 `
 
 export const Header = styled.div`
@@ -101,12 +96,11 @@ export const Article = styled.article`
 
 export const Img = styled.img`
   ${fadeIn()}
-  width: 100%;
-  max-width: 100%;
-  max-width: -webkit-fill-available;
-  max-width: -moz-available;          /* WebKit-based browsers will ignore this. */
-  max-width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-  max-width: fill-available;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: cover;
+  object-position: center;
+  
 `
 
 export const Title = styled.p`
